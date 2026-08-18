@@ -1,183 +1,627 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<title>Fernando Banegas | Desarrollo de Software</title>
+  <title>Fernando Banegas | Desarrollo de Software</title>
 
-<meta
+  <meta
     name="description"
-    content="Desarrollo de aplicaciones móviles, sitios web y sistemas empresariales en Honduras."
->
+    content="Desarrollo de sitios web, aplicaciones móviles y sistemas empresariales."
+  />
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body{
-    background:#0f172a;
-    color:white;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-header{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:30px;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #070b14;
+      color: #ffffff;
+      line-height: 1.6;
+    }
 
-h1{
-    font-size:60px;
-    margin-bottom:20px;
-}
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-h2{
-    font-size:28px;
-    font-weight:400;
-    margin-bottom:20px;
-}
+    /* NAVBAR */
 
-p{
-    max-width:700px;
-    line-height:1.8;
-    margin-bottom:40px;
-}
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(7, 11, 20, 0.8);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
 
-.buttons{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    justify-content:center;
-}
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.btn{
-    text-decoration:none;
-    color:white;
-    padding:15px 30px;
-    border:1px solid white;
-    border-radius:10px;
-}
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+    }
 
-.btn:hover{
-    background:white;
-    color:#0f172a;
-}
+    .logo span {
+      color: #4f8cff;
+    }
 
-section{
-    padding:100px 30px;
-    text-align:center;
-}
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
 
-.services{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    flex-wrap:wrap;
-}
+    .nav-links a {
+      color: #cbd5e1;
+      font-size: 15px;
+      transition: 0.3s;
+    }
 
-.card{
-    width:300px;
-    padding:30px;
-    border:1px solid #334155;
-    border-radius:15px;
-}
+    .nav-links a:hover {
+      color: #ffffff;
+    }
 
-footer{
-    text-align:center;
-    padding:40px;
-    border-top:1px solid #334155;
-}
-</style>
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 130px 30px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      background: #2563eb;
+      filter: blur(180px);
+      opacity: 0.18;
+      top: 10%;
+      left: 20%;
+    }
+
+    .hero-content {
+      max-width: 1000px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(79, 140, 255, 0.4);
+      background: rgba(79, 140, 255, 0.08);
+      color: #8db4ff;
+      border-radius: 50px;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 88px);
+      line-height: 1;
+      letter-spacing: -4px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #ffffff, #7ea8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h2 {
+      font-size: clamp(24px, 3vw, 34px);
+      font-weight: 500;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 750px;
+      margin: 0 auto 40px;
+      color: #94a3b8;
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #ffffff;
+      color: #0b1220;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+    }
+
+    .btn-secondary {
+      border: 1px solid #334155;
+      color: #ffffff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 110px 30px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-label {
+      color: #4f8cff;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 15px;
+    }
+
+    .section-description {
+      color: #94a3b8;
+      max-width: 650px;
+      margin-bottom: 50px;
+    }
+
+    /* SERVICES */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 35px;
+      border-radius: 18px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.015)
+      );
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.35s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(79,140,255,0.5);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(79,140,255,0.12);
+      border-radius: 12px;
+      font-size: 23px;
+      margin-bottom: 25px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #94a3b8;
+      font-size: 15px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .about-box {
+      border-radius: 20px;
+      min-height: 380px;
+      background:
+        radial-gradient(circle at top left, rgba(79,140,255,.2), transparent 45%),
+        #0d1424;
+      border: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .code {
+      width: 100%;
+      font-family: monospace;
+      color: #94a3b8;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .blue {
+      color: #5b9aff;
+    }
+
+    .green {
+      color: #76d49b;
+    }
+
+    .about-text p {
+      color: #94a3b8;
+      margin-bottom: 18px;
+    }
+
+    /* TECHNOLOGIES */
+
+    .tech-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .tech {
+      padding: 9px 15px;
+      background: #111827;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      color: #cbd5e1;
+      font-size: 14px;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      text-align: center;
+      padding: 70px 30px;
+      background:
+        radial-gradient(circle at center, rgba(37,99,235,.18), transparent 60%),
+        #0b1220;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 25px;
+    }
+
+    .contact-box h2 {
+      font-size: 45px;
+      margin-bottom: 15px;
+    }
+
+    .contact-box p {
+      color: #94a3b8;
+      margin-bottom: 30px;
+    }
+
+    footer {
+      padding: 40px 30px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 850px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .contact-box h2 {
+        font-size: 34px;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
 
-<header>
+  <nav>
+    <div class="nav-container">
 
-<h1>Fernando Banegas</h1>
+      <div class="logo">
+        Fernando<span>.</span>
+      </div>
 
-<h2>Desarrollador de software</h2>
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#contacto">Contacto</a>
+      </div>
 
-<p>
-Diseño y desarrollo aplicaciones móviles, sitios web y sistemas
-empresariales para ayudar a las empresas a digitalizar sus procesos.
-</p>
+    </div>
+  </nav>
 
-<div class="buttons">
+  <main>
 
-<a class="btn" href="#servicios">
-Servicios
-</a>
+    <section class="hero" id="inicio">
 
-<a class="btn" href="mailto:correo@ejemplo.com">
-Contáctame
-</a>
+      <div class="hero-content">
 
-</div>
+        <div class="badge">
+          Desarrollo de soluciones digitales
+        </div>
 
-</header>
+        <h1>
+          <span>Fernando Banegas</span>
+        </h1>
 
-<section id="servicios">
+        <h2>
+          Desarrollo software que transforma ideas en soluciones.
+        </h2>
 
-<h2>Servicios</h2>
+        <p>
+          Diseño y desarrollo sitios web, aplicaciones móviles y sistemas
+          empresariales enfocados en resolver problemas reales y ayudar a
+          empresas a digitalizar sus procesos.
+        </p>
 
-<br><br>
+        <div class="hero-buttons">
 
-<div class="services">
+          <a href="#servicios" class="btn btn-primary">
+            Ver servicios
+          </a>
 
-<div class="card">
+          <a href="#contacto" class="btn btn-secondary">
+            Hablemos de tu proyecto
+          </a>
 
-<h3>Aplicaciones móviles</h3>
+        </div>
 
-<br>
+      </div>
 
-<p>
-Aplicaciones para Android y iPhone.
-</p>
+    </section>
 
-</div>
 
-<div class="card">
+    <section id="servicios">
 
-<h3>Sitios web</h3>
+      <div class="container">
 
-<br>
+        <div class="section-label">Servicios</div>
 
-<p>
-Páginas web modernas y optimizadas.
-</p>
+        <h2 class="section-title">
+          Soluciones digitales a la medida
+        </h2>
 
-</div>
+        <p class="section-description">
+          Desarrollo soluciones tecnológicas adaptadas a las necesidades
+          específicas de cada proyecto o empresa.
+        </p>
 
-<div class="card">
+        <div class="services-grid">
 
-<h3>Sistemas empresariales</h3>
+          <div class="card">
 
-<br>
+            <div class="icon">🌐</div>
 
-<p>
-Soluciones tecnológicas personalizadas.
-</p>
+            <h3>Sitios Web</h3>
 
-</div>
+            <p>
+              Sitios web modernos, rápidos y adaptables a computadoras,
+              tablets y dispositivos móviles.
+            </p>
 
-</div>
+          </div>
 
-</section>
 
-<footer>
+          <div class="card">
 
-© 2026 Fernando Banegas
+            <div class="icon">📱</div>
 
-</footer>
+            <h3>Aplicaciones móviles</h3>
+
+            <p>
+              Desarrollo de aplicaciones para Android y iOS enfocadas
+              en brindar experiencias simples y eficientes.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="icon">⚙️</div>
+
+            <h3>Sistemas empresariales</h3>
+
+            <p>
+              Sistemas personalizados para automatizar procesos,
+              administrar información y mejorar operaciones.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="sobre-mi">
+
+      <div class="container">
+
+        <div class="about-grid">
+
+          <div class="about-box">
+
+            <div class="code">
+
+              <div><span class="blue">const</span> developer = {</div>
+
+              <div>
+                &nbsp;&nbsp;name:
+                <span class="green">"Fernando Banegas"</span>,
+              </div>
+
+              <div>
+                &nbsp;&nbsp;passion:
+                <span class="green">"Technology"</span>,
+              </div>
+
+              <div>
+                &nbsp;&nbsp;focus:
+                <span class="green">"Digital Solutions"</span>,
+              </div>
+
+              <div>};</div>
+
+            </div>
+
+          </div>
+
+
+          <div class="about-text">
+
+            <div class="section-label">Sobre mí</div>
+
+            <h2 class="section-title">
+              Tecnología enfocada en resultados
+            </h2>
+
+            <p>
+              Soy Fernando Banegas, desarrollador de software enfocado
+              en crear soluciones digitales prácticas, modernas y
+              adaptadas a las necesidades de cada negocio.
+            </p>
+
+            <p>
+              Mi objetivo es utilizar la tecnología para simplificar
+              procesos, mejorar experiencias y ayudar a transformar
+              ideas en productos digitales funcionales.
+            </p>
+
+            <div class="tech-list">
+
+              <div class="tech">Flutter</div>
+              <div class="tech">JavaScript</div>
+              <div class="tech">Node.js</div>
+              <div class="tech">MySQL</div>
+              <div class="tech">GitHub</div>
+              <div class="tech">Power BI</div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <section id="contacto">
+
+      <div class="container">
+
+        <div class="contact-box">
+
+          <div class="section-label">
+            Contacto
+          </div>
+
+          <h2>
+            ¿Tienes un proyecto en mente?
+          </h2>
+
+          <p>
+            Hablemos sobre tu idea y cómo podemos convertirla
+            en una solución digital.
+          </p>
+
+          <a
+            href="mailto:TU-CORREO@gmail.com"
+            class="btn btn-primary"
+          >
+            Contáctame
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    © 2026 Fernando Banegas. Todos los derechos reservados.
+  </footer>
 
 </body>
 </html>
